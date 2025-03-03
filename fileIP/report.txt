@@ -1,0 +1,26 @@
+loogiamalüüs raport 
+kõige aktivsem ip oli: 
+192.168.1.10: 2 korda 
+10.0.0.5: 2 korda 
+192.168.2.15: 1 korda 
+10.0.1.20: 1 korda 
+172.16.5.3: 1 korda 
+192.168.3.14: 1 korda 
+10.0.0.10: 1 korda 
+172.16.7.9: 1 korda 
+192.168.4.30: 1 korda 
+10.0.2.4: 1 korda 
+172.16.8.12: 1 korda 
+192.168.5.22: 1 korda 
+10.0.3.25: 1 korda 
+172.16.2.8: 1 korda 
+192.168.6.11: 1 korda 
+10.0.4.19: 1 korda 
+172.16.9.21: 1 korda 
+192.168.7.16: 1 korda 
+10.0.5.8: 1 korda 
+172.16.4.6: 1 korda 
+172.16.3.2: 1 korda 
+loogiamalüüs raport 
+kõige aktivsem ip oli: 
+200: 23 korda 
