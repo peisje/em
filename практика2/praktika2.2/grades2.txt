@@ -1,0 +1,21 @@
+Name: d
+Grades: 3, 3, 3
+---
+Name: s
+Grades: 1, 2, 3
+---
+Name: r
+Grades: 3, 5, 5
+---
+Name: y
+Grades: 1, 2, 4
+---
+Name: q
+Grades: 1,1,2
+---
+Name: c
+Grades: 1, 2 , 3
+---
+Name: s
+Grades: 2,2,2
+---
