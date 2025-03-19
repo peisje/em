@@ -40,7 +40,7 @@ class Owner:
                 car.displayInfo()
                 serviceCenter.carRepair(car)
                 print(f"Car {car.brand} {car.model} has been repaired.")
-
+    def Invcoice(car, owner, service_name,invoiceNum):
 
 bmwCenter = ServiceCenter("BMW center")
 car1 = Car("BMW", "E34", 1990)
@@ -65,5 +65,4 @@ DarjaKovalenko.sendToCenter(bmwCenter)
 
 
 print(f"Car {car1.brand} {car1.model} status: Broken = {car1.is_broken}")
-        
-        
+
