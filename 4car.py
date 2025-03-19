@@ -10,7 +10,9 @@ class CarPark:
         self.name = name
         
     def breakDown(self):
-        self.is_broken = True 
+        self.is_broken = True
+        
+    def displayInfo(self):
     
 class ServiceCenter:
     def __init__(self, name):
@@ -20,12 +22,19 @@ class ServiceCenter:
         car.is_broken = False
     
 class Owner:
-    def __init__(self, name):  
+    def __init__(self, name):    
         self.name = name
         self.cars = []
         
     def addCars(self, car):
         self.cars.append(car)
+    def sendToCenter(self, ServiceCenter):
+        print("Kasutaja saatis remondikeskusse sellised autod")
+        for car in cars:
+            if car.is_broken:
+                print()
+            serviceCenter
+                
 
 bmwCenter = ServiceCenter("BMW center")
 car1 = Car("BMW", "E34", 1990)
@@ -33,3 +42,8 @@ car1.is_broken = True
         
 bmwCenter.carRepair(car1)
 print(car1.is_broken)
+    
+        
+        
+        
+        
