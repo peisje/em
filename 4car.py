@@ -65,7 +65,5 @@ DarjaKovalenko.sendToCenter(bmwCenter)
 
 
 print(f"Car {car1.brand} {car1.model} status: Broken = {car1.is_broken}")
-
-
         
         
