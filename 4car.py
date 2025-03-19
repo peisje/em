@@ -34,7 +34,7 @@ class Owner:
         self.cars.append(car)
     def sendToCenter(self, ServiceCenter):
         print("Kasutaja saatis remondikeskusse sellised autod")
-        for car in cars:
+        for car in self.cars:
             if car.is_broken:
                 car.displayInfo()
             serviceCenter.carRepair(car)
@@ -42,16 +42,25 @@ class Owner:
 
 bmwCenter = ServiceCenter("BMW center")
 car1 = Car("BMW", "E34", 1990)
+car1.is_broken = True
+
 car2 = Car("Ferrari", "Ferrari Roma", 2024)
+car2.is_broken = True
+
 car3 = Car("VW", "Polo", 1800)
+
 car4 = Car("Toyota", "Corolla", 2020)
 
 
-car1.is_broken = True
+DarjaKovalenko = Owner("Darja Kovalenko")
+DarjaKovalenko.addCars(car1)
+DarjaKovalenko.addCars(car2)
+DarjaKovalenko.addCars(car3)
+DarjaKovalenko.addCars(car4)
+
         
 bmwCenter.carRepair(car1)
 print(car1.is_broken)
-    
         
         
         
