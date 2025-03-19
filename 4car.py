@@ -22,6 +22,10 @@ class ServiceCenter:
 class Owner:
     def __init__(self, name):  
         self.name = name
+        self.cars = []
+        
+    def addCars(self, car):
+        self.cars.append(car)
 
 bmwCenter = ServiceCenter("BMW center")
 car1 = Car("BMW", "E34", 1990)
