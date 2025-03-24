@@ -1,3 +1,4 @@
+#self eto element mkotori pomogaet obrasatsa  vnutrenim dannim klassa
 class Country:
     def __init__(self, name, population, budget, currency, area, capital, language):
         self.name = name
@@ -116,20 +117,20 @@ class Person:
         
         
 
-country1 = Country("Estonia", 1000000, 18000000, "euro", 45000, "Tallinn", "estonian")
-country2 = Country("Germany", 99000000, 1000000, "dong", 330000, "Ha Noi", "vietnamian")
+country1 = Country("Estonia", 500000, 1000000, "euro", 55000, "Tallinn", "estonian")
+country2 = Country("Germany", 19000000, 1500000, "euru", 330000, "Gamburg", "germanian")
 
 
-county1 = County("Harjumaa", 40000, 800000, 57899)
-county2 = County("Võrumaa", 60000, 60000, 99999)
-county3 = County("Tartumaa", 456, 68000, 70000) 
+county1 = County("Harjumaa", 50000, 600000, 97699)
+county2 = County("Võrumaa", 50000, 50000, 96999)
+county3 = County("Tartumaa", 476, 38000, 80000) 
 
 country1.add_county(county1)
 country1.add_county(county2)
 country2.add_county(county3)
 
 
-city1 = City("Tartu", 100000, 500000)
+city1 = City("Tartu", 60000, 500000)
 city2 = City("Tallinn", 80000, 300000)
 city3 = City("Aya napa", 120000, 700000)
 city4 = City("Afins", 60000, 200000)
@@ -145,8 +146,8 @@ county3.add_city(city5)
 
 person1 = Person("Dasa", 20, 50000, city1)
 person2 = Person("Lena", 25, 40000, city2)
-person3 = Person("Elina", 40, 60000, city3)
-person4 = Person("Boris", 40, 7000, city3)
+person3 = Person("Elina", 20, 60000, city3)
+person4 = Person("Boris", 30, 7000, city3)
 
 
 person1.pay_taxes()
