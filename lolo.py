@@ -1,5 +1,5 @@
 class Country:
-    def init(self, name, population, budget, currency, area, capital, language):
+    def __init__(self, name, population, budget, currency, area, capital, language):
         self.name = name
         self.population = population
         self.budget = budget
@@ -30,7 +30,7 @@ class Country:
 
 
 class County:
-    def init(self, name, population, budget, area):
+    def __init__(self, name, population, budget, area):
         self.name = name
         self.population = population
         self.budget = budget
@@ -62,7 +62,7 @@ class County:
 
 
 class City:
-    def init(self, name, population, budget):
+    def __init__(self, name, population, budget):
         self.name = name
         self.population = population
         self.budget = budget
@@ -96,7 +96,7 @@ class City:
 
 
 class Person:
-    def init(self, name, age, currency, city):
+    def __init__(self, name, age, currency, city):
         self.name = name
         self.age = age
         self.currency = currency
@@ -117,23 +117,23 @@ class Person:
         
 
 country1 = Country("Estonia", 1000000, 18000000, "euro", 45000, "Tallinn", "estonian")
-country2 = Country("Vietnam", 99000000, 1000000, "dong", 330000, "Ha Noi", "vietnamian")
+country2 = Country("Germany", 99000000, 1000000, "dong", 330000, "Ha Noi", "vietnamian")
 
 
 county1 = County("Harjumaa", 40000, 800000, 57899)
-county2 = County("Viljandimaa", 60000, 60000, 99999)
-county3 = County("Mogiljev region", 456, 68000, 70000) 
+county2 = County("Võrumaa", 60000, 60000, 99999)
+county3 = County("Tartumaa", 456, 68000, 70000) 
 
 country1.add_county(county1)
 country1.add_county(county2)
 country2.add_county(county3)
 
 
-city1 = City("Mogiljov", 100000, 500000)
-city2 = City("Antananarivu", 80000, 300000)
-city3 = City("Da Nang", 120000, 700000)
-city4 = City("Viimsi", 60000, 200000)
-city5 = City("Viljandi", 150000, 900000)
+city1 = City("Tartu", 100000, 500000)
+city2 = City("Tallinn", 80000, 300000)
+city3 = City("Aya napa", 120000, 700000)
+city4 = City("Afins", 60000, 200000)
+city5 = City("Funsal", 150000, 900000)
 
 
 county1.add_city(city1)
@@ -143,10 +143,10 @@ county3.add_city(city4)
 county3.add_city(city5)
 
 
-person1 = Person("Dasa", 30, 50000, city1)
-person2 = Person("Aliks", 25, 40000, city2)
-person3 = Person("Ronaldo", 40, 60000, city3)
-person4 = Person("Messi", 40, 7000, city3)
+person1 = Person("Dasa", 20, 50000, city1)
+person2 = Person("Lena", 25, 40000, city2)
+person3 = Person("Elina", 40, 60000, city3)
+person4 = Person("Boris", 40, 7000, city3)
 
 
 person1.pay_taxes()
