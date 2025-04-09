@@ -1,1 +1,61 @@
-a
+from datetime import datetime
+
+class Event:
+    def __init__(self, note, officer_name):
+        self.timestamp = datetime.now()
+        self.note = note
+        self.officer_name = officer_name
+
+    def __str__(self):
+        return f"[{self.timestamp.strftime('%Y-%m-%d %H:%M:%S')}] {self.officer_name}: {self.note}"
+
+
+class Case:
+    def __init__(self, case_id, description):
+        self.case_id = case_id
+        self.description = description
+        self.status = "open"
+        self.events = []
+
+    def add_event(self, event):
+        self.events.append(event)
+
+    def close_case(self):
+        self.status = "closed"
+
+    def get_timeline(self):
+        return sorted(self.events, key=lambda e: e.timestamp)
+
+    def get_status(self):
+        return self.status
+
+    def get_description(self):
+        return self.description
+
+    def get_case_id(self):
+        return self.case_id
+
+
+class PoliceOfficer:
+    def __init__(self, name, badge_number):
+        self.name = name
+        self.badge_number = badge_number
+        self.cases = []
+
+    def assign_case(self, case):
+        self.cases.append(case)
+
+    def get_case_by_id(self, case_id):
+        for case in self.cases:
+            if case.get_case_id() == case_id:
+                return case
+        return None
+
+    def get_summary(self):
+        total_cases = len(self.cases)
+        closed_cases = len([c for c in self.cases if c.get_status() == "closed"])
+        return f"Kokku juhtumeid: {total_cases}, neist suletud: {closed_cases}"
+
+    def get_info(self):
+        return f"Politseinik: {self.name}, Badge: {self.badge_number}"
+
