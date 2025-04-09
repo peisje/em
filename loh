@@ -58,4 +58,27 @@ class PoliceOfficer:
 
     def get_info(self):
         return f"Politseinik: {self.name}, Badge: {self.badge_number}"
+# Politseinik
+officer = PoliceOfficer("Mari Maasikas", "1123")
+
+# Juhtum
+case1 = Case("CASE001", "Vargus supermarketis")
+officer.assign_case(case1)
+
+# Lisa sündmus
+event1 = Event("Kohapeal uuritud", officer.name)
+case1.add_event(event1)
+
+# Sulge juhtum
+case1.close_case()
+
+# Kuvame andmed
+print(officer.get_info())
+print(officer.get_summary())
+
+print("Juhtumi sündmused:")
+for event in case1.get_timeline():
+    print(event)
+
+
 
