@@ -1,13 +1,13 @@
 class Platform:
     def __init__(self, food=100):
-        self.food = food  # Уровень начинается с 100 еды
+        self.food = food
 
     def add_food(self, amount):
-        self.food += amount  # Добавляем еду
+        self.food += amount
 
     def remove_food(self, amount):
         if self.food >= amount:
-            self.food -= amount  # Убираем еду
+            self.food -= amount
         else:
             print("Недостаточно еды!")
 
@@ -16,45 +16,83 @@ class Platform:
 
 
 class Level:
-    def __init__(self, platform):
-        self.platform = platform  # Привязываем платформу с едой к уровню
+    def __init__(self, number):
+        self.number = number  # Номер уровня
+        self.platform = Platform()  # Платформа создаётся автоматически
+        self.next_level = None  # Связь с другим уровнем (если будет)
+
+    def connect_next(self, next_level):
+        self.next_level = next_level  # Связываем уровень с другим
 
     def make_decision(self):
-        action = input("Что сделать? (оставить/передать/поделиться): ").strip().lower()
+        print(f"\nВы на уровне {self.number}. Еды: {self.platform.food}")
+        print("Меню:")
+        print("1 - Оставить еду себе")
+        print("2 - Передать еду на следующий уровень")
+        print("3 - Поделиться едой с другим уровнем")
 
-        if action == "оставить":
+        choice = input("Ваш выбор: ").strip()
+
+        if choice == "1":
             print("Еду оставили себе.")
-        elif action == "передать":
-            self.give_food_to_next_level()
-        elif action == "поделиться":
+        elif choice == "2":
+            self.give_food()
+        elif choice == "3":
             self.share_food()
         else:
-            print("Некорректное действие!")
+            print("Некорректный выбор!")
 
-    def give_food_to_next_level(self):
-        loss = self.platform.food * 0.2  # Потеря 20% при передаче
-        transferred_food = self.platform.food - loss
-        print(f"Передали еду на следующий уровень. Потеряно {loss} еды.")
-        self.platform.remove_food(self.platform.food)
+    def give_food(self):
+        if self.next_level:
+            amount = 20
+            self.platform.remove_food(amount)
+            self.next_level.platform.add_food(amount)
+            print(f"Уровень {self.number} передал {amount} еды уровню {self.next_level.number}.")
+        else:
+            print("Следующего уровня нет.")
 
     def share_food(self):
-        shared_food = self.platform.food / 2
-        self.platform.remove_food(shared_food)
-        print(f"Поделились едой. Осталось {self.platform.food} еды.")
+        if self.next_level:
+            amount = 10
+            self.platform.remove_food(amount)
+            self.next_level.platform.add_food(amount)
+            print(f"Уровень {self.number} поделился {amount} еды с уровнем {self.next_level.number}.")
+        else:
+            print("Следующего уровня нет.")
+
+# Создаём платформы
+platform1 = Platform(100)
+platform2 = Platform(50)
+
+# Создаём уровни и связываем их
+level2 = Level(platform2)
+level1 = Level(platform1, next_level=level2)
+
+# Создаём людей
+alice = Person("Алиса")
+bob = Person("Боб")
+
+# Алиса принимает решение на первом уровне
+alice.act(level1)
+print(platform1.get_info())
+print(platform2.get_info())
+
+# Боб принимает решение на втором уровне
+bob.act(level2)
+
+#
+print(platform2.get_info())
+lvl1 = Level(1)
+lvl2 = Level(2)
+
+# Связываем уровни
+lvl1.connect_next(lvl2)
+
+# Пример действий
+lvl1.make_decision()
+print(lvl1.platform.get_info())
+print(lvl2.platform.get_info())
 
 
-# Создаём платформу с едой
-lvl1 = Platform(100)
-lvl2 = Platform(80)
 
-# Создаём уровни
-level1 = Level(lvl1)
-level2 = Level(lvl2)
 
-# Пример принятия решения на первом уровне
-level1.make_decision()
-print(lvl1.get_info())
-
-# Пример принятия решения на втором уровне
-level2.make_decision()
-print(lvl2.get_info())
