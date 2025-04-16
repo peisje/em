@@ -1,134 +1,99 @@
 class Platform:
-    def __init__ (self, food=100):
-        self.food = []
-        
-        
-    def addfood(self, amount):
+    def __init__(self, food=100):
+        self.food = food  # исправлено: теперь это число
+
+    def add_food(self, amount):
         self.food += amount
-        
-    def removefood(self):
+
+    def remove_food(self, amount):
         if self.food >= amount:
             self.food -= amount
         else:
-            print("not enough food")
-    
-    def getinfo(self):
-        return f"food on level: {self.food}"
-    
-    
-    
+            print("Not enough food!")
+
+    def get_info(self):
+        return f"Food on level: {self.food}"
+
+
 class Level:
-    def __init__ (self, number):
+    def __init__(self, number):
         self.number = number
-        self.platform = Platform ()
-        self.nextlevel = none
-        
+        self.platform = Platform()
+        self.next_level = None
+
     def connect_next(self, next_level):
         self.next_level = next_level
-  
-  
-    def giveanotherlvl(self):
+
+    def give_another_lvl(self):
         if self.next_level:
             amount = 20
             self.platform.remove_food(amount)
             self.next_level.platform.add_food(amount)
-            print(f"Level {self.number} share {amount} food with level {self.next_level.number}.")
+            print(f"Level {self.number} gave {amount} food to level {self.next_level.number}.")
         else:
-            print("naxt level dont exist.")
-            
+            print("Next level doesn't exist.")
+
     def share_food(self):
         if self.next_level:
             amount = 10
             self.platform.remove_food(amount)
             self.next_level.platform.add_food(amount)
-            print(f"level {self.number} shre {amount} food with level {self.next_level.number}.") 
+            print(f"Level {self.number} shared {amount} food with level {self.next_level.number}.")
         else:
-            print("next level doesny exist")
-    
+            print("Next level doesn't exist.")
+
+
 class People:
     def __init__(self, name):
         self.name = name
-        
-    def actionlvl(self, level):
-        print(f"{self.name} act on level {level.number}:")
-    
-    
-    
+
+    def action_on_level(self, level):
+        print(f"{self.name} acts on level {level.number}.")
 
 
+# Создание людей
+people = [People(f"Person{i}") for i in range(1, 11)]
 
-pers1 = People("person1")
-pers2 = People("person2")
-pers3 = People("person3")
-pers4 = People("person4")
-pers5 = People("person5")
-pers6 = People("person6")
-pers7 = People("person7")
-pers8 = People("person8")
-pers9 = People("person9")
-pers10 = People("person10")
+# Создание уровней
+levels = [Level(i) for i in range(1, 11)]
 
+# Связь между уровнями
+for i in range(len(levels) - 1):
+    levels[i].connect_next(levels[i + 1])
 
+# Выбор уровня для примера
+current_level = levels[0]  # level 1
 
-
- 
-      
-
-    
-    
-#    
-platform1 = Platform(50)
-platform2 = Platform(10)
-
-lvl1 = Platform(1)
-lvl2 = Platform(2)
-lvl3 = Platform(3)
-lvl4 = Platform(4)
-lvl5 = Platform(5)
-lvl6 = Platform(6)
-lvl7 = Platform(7)
-lvl8 = Platform(8)
-lvl9 = Platform(9)
-lvl10 = Platform(10)
-# print(lvl1.addfood)
-# print(lvl2.removefood)
-# print(lvl3.getinfo)
-
-# pers1.act(lvl1)
-print(platform1.getinfo())
-print(platform2.getinfo())
-
-# lvl1.connect_next(lvl2)
-
-
-# lvl1.make_decision()
-# print(lvl1.platform.get_info())
-# print(lvl2.platform.get_info())
-
-
-
-
-
-
+# Меню
 while True:
-    print("menu:")
-    print("1 - take food yourself")
-    print("2 - give food another lvl")
-    print("3 - share food with someone")
- 
-    choice = input("your choise: ").strip()
- 
+    print("\nMenu:")
+    print("1 - Take food yourself")
+    print("2 - Give food to next level")
+    print("3 - Share food with next level")
+    print("4 - Show current and next level food")
+    print("5 - Exit")
+
+    choice = input("Your choice: ").strip()
+
     if choice == "1":
-        print("you take your food.")
+        print("You take your food.")
 
     elif choice == "2":
-        self.giveanotherlvl()
+        current_level.give_another_lvl()
 
     elif choice == "3":
-        self.share_food()
+        current_level.share_food()
 
     elif choice == "4":
-       print("bye")
-       break
+        print(current_level.platform.get_info())
+        if current_level.next_level:
+            print(current_level.next_level.platform.get_info())
+        else:
+            print("No next level.")
+
+    elif choice == "5":
+        print("Goodbye!")
+        break
+
     else:
-        print("choise dont correct!")
+        print("Choice is not correct!")
