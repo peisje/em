@@ -1,4 +1,4 @@
-# Klass 1: Platvorm
+Klass 1: Platvorm
 class Platvorm:
     def __init__(self):
         self.ressursid = 100
