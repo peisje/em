@@ -1,35 +1,54 @@
+# Klass 1: Platvorm
+class Platvorm:
+    def __init__(self):
+        self.ressursid = 100
+
+# Klass 2: Tase
+class Tase:
+    def __init__(self):
+        self.ressursid = 0
+
+# Klass 3: Inimene
+class Inimene:
+    def __init__(self):
+        self.ressursid = 0
 
 
-# Уровни 
-levels = [50] * 10  # 10 уровней, у каждого по 50 ресурсов
-min_resources = 10  # минимум для "выживания"
+# Loome objektid
+platvorm = Platvorm()
+tase = Tase()
+inimene = Inimene()
 
-for i in range(len(levels)):
-    print("\nУровень", i + 1)
-    print("Ресурсы сейчас:", levels[i])
+# Platvorm annab ressursse tasemele
+print("Platvormil on", platvorm.ressursid, "ressurssi.")
+valik1 = input("Kas anda pool tasemele? (jah/ei): ")
 
-    if i == len(levels) - 1:
-        print("Это последний уровень. Нельзя передать дальше.")
-        continue
+if valik1 == "jah":
+    antud = platvorm.ressursid // 2
+    kaod = int(antud * 0.1)
+    tegelik = antud - kaod
+    platvorm.ressursid -= antud
+    tase.ressursid += tegelik
+    print("Platvorm andis tasemele", tegelik, "ressurssi.")
+else:
+    print("Platvorm ei andnud midagi.")
 
-    print("1 - Оставить ресурсы себе")
-    print("2 - Передать половину следующему уровню (теряется 10%)")
-    выбор = input("Выбери действие (1 или 2): ")
+# Tase annab ressursse inimesele
+print("\nTasemel on", tase.ressursid, "ressurssi.")
+valik2 = input("Kas anda pool inimesele? (jah/ei): ")
 
-    if выбор == "1":
-        print("Ты оставил ресурсы себе.")
-    elif выбор == "2":
-        передать = levels[i] // 2
-        потери = int(передать * 0.1)
-        итог = передать - потери
-        levels[i] -= передать
-        levels[i + 1] += итог
-        print("Передано следующему уровню:", итог)
-    else:
-        print("Неверный выбор. Ресурсы остались на месте.")
+if valik2 == "jah":
+    antud = tase.ressursid // 2
+    kaod = int(antud * 0.1)
+    tegelik = antud - kaod
+    tase.ressursid -= antud
+    inimene.ressursid += tegelik
+    print("Tase andis inimesele", tegelik, "ressurssi.")
+else:
+    print("Tase ei andnud midagi.")
 
-# Показываем результат
-print("\n--- Результаты ---")
-for i in range(len(levels)):
-    статус = "Выжил" if levels[i] >= min_resources else "ВЫБЫЛ"
-    print(f"Уровень {i + 1}: {levels[i]} ресурсов - {статус}")
+# Tulemused
+print("\n--- Lõpptulemused ---")
+print("Platvormil:", platvorm.ressursid)
+print("Tasemel:", tase.ressursid)
+print("Inimesel:", inimene.ressursid)
