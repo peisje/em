@@ -1,160 +1,144 @@
+
 class Platform:
-    def __init__ (self, food=100):
-        self.food = []
-        
-        
-    def addfood(self, amount):
-        self.food += amount
-        
-    def removefood(self):
-        if self.food >= amount:
-            self.food -= amount
+    def __init__(self, food=0):
+        self.food = food
+
+    def show_food(self):
+        print("Food on this platform:", self.food)
+def kill_next_level(self, next_platform):
+        if next_platform:
+            next_platform.food = 0
+            print("Next level has been destroyed! 💀 All food is gone.")
         else:
-            print("not enough food")
-    
-    def getinfo(self):
-        return f"food on level: {self.food}"
-    
-    
-    
+            print("No next level to destroy.")
 class Level:
-    def __init__ (self, number):
+    def __init__(self, number, food):
         self.number = number
-        self.platform = Platform ()
-        self.nextlevel = none
-        
-    def connect_next(self, next_level):
-        self.next_level = next_level
-  
-  
-    def giveanotherlvl(self):
-        if self.next_level:
-            amount = 20
-            self.platform.remove_food(amount)
-            self.next_level.platform.add_food(amount)
-            print(f"Level {self.number} share {amount} food with level {self.next_level.number}.")
+        self.food = food
+        self.next = None
+        self.people = []
+
+    def give_food(self):
+        if self.next and self.food >= 10:
+            self.food -= 10
+            self.next.food += 10
+            print("Gave 10 food to next level")
         else:
-            print("naxt level dont exist.")
-            
+            print("Not enough food you are died")
+
     def share_food(self):
-        if self.next_level:
-            amount = 10
-            self.platform.remove_food(amount)
-            self.next_level.platform.add_food(amount)
-            print(f"level {self.number} shre {amount} food with level {self.next_level.number}.") 
+        if self.next and self.food >= 5:
+            self.food -= 5
+            self.next.food += 5
+            print("Shared 5 food with next level")
         else:
-            print("next level doesny exist")
-            
-    def takeall(self):
-        print("ypu take all food", self.food, "all died")
-    
-class People:
+            print("Not enough food to share, you are died")
+
+    def show_food(self):
+        print("Food on this level:", self.food)
+        if self.next:
+            print("Food on next level:", self.next.food)
+
+
+
+
+
+class Person:
     def __init__(self, name):
         self.name = name
+
+    def who_is_here(self, level):
+        # Show who is on the current level
+        if level.people:
+            print(f"People on level {level.number}:")
+            for person in level.people:
+                print(f"- {person.name}")
         
-    def actionlvl(self, level):
-        print(f"{self.name} act on level {level.number}:")
-    
-people = [People(f"Person{i}") for i in range(1, 11)]
-
-# levels = [Level(i) for i in range(1, 11)]
-# 
-# 
-# for i in range(len(levels) - 1):
-#     levels[i].connect_next(levels[i + 1])
-# 
-# current_level = levels[0]  
-    
 
 
+# === Create people ===
+person1 = Person("pers1")
+person2 = Person("pers2")
+person3 = Person("pers3")
+person4 = Person("pers4")
+person5 = Person("pers5")
+person6 = Person("pers6")
+person7 = Person("pers7")
+person8 = Person("pers8")
+person9 = Person("pers9")
+person10 = Person("pers10")
 
-pers1 = People("person1")
-pers2 = People("person2")
-pers3 = People("person3")
-pers4 = People("person4")
-pers5 = People("person5")
-pers6 = People("person6")
-pers7 = People("person7")
-pers8 = People("person8")
-pers9 = People("person9")
-pers10 = People("person10")
+# === Create levels ===
+level1 = Level(1, 100)
+level2 = Level(2, 0)
+level3 = Level(3, 0)
+level4 = Level(4, 0)
+level5 = Level(5, 0)
+level6 = Level(6, 0)
+level7 = Level(7, 0)
+level8 = Level(8, 0)
+level9 = Level(9, 0)
+level10 = Level(10, 0)
 
+# === Connect levels ===
+level1.next = level2
+level2.next = level3
+level3.next = level4
+level4.next = level5
+level5.next = level6
+level6.next = level7
+level7.next = level8
+level8.next = level9
+level9.next = level10
 
+# === Assign people to levels ===
+level1.people.append(person1)
+level2.people.append(person2)
+level3.people.append(person3)
+level4.people.append(person4)
+level5.people.append(person5)
+level6.people.append(person6)
+level7.people.append(person7)
+level8.people.append(person8)
+level9.people.append(person9)
+level10.people.append(person10)
 
+# === Player ===
+player = Person("Player")
+current_level = level1
 
- 
-      
-
-    
-    
-#    
-platform1 = Platform(50)
-platform2 = Platform(10)
-
-lvl1 = Platform(1)
-lvl2 = Platform(2)
-lvl3 = Platform(3)
-lvl4 = Platform(4)
-lvl5 = Platform(5)
-lvl6 = Platform(6)
-lvl7 = Platform(7)
-lvl8 = Platform(8)
-lvl9 = Platform(9)
-lvl10 = Platform(10)
-# print(lvl1.addfood)
-# print(lvl2.removefood)
-# print(lvl3.getinfo)
-
-# pers1.act(lvl1)
-print(platform1.getinfo())
-print(platform2.getinfo())
-
-# lvl1.connect_next(lvl2)
-
-
-# lvl1.make_decision()
-# print(lvl1.platform.get_info())
-# print(lvl2.platform.get_info())
-
-
-
-
-
-
+# === Menu ===
 while True:
-    print("menu:")
-    print("1 - take food yourself")
-    print("2 - give food another lvl")
-    print("3 - share food with someone")
-    print("4 - share food with platform")
-    print("5 - kill all")
-    print("6 - bye")
- 
-    choice = input("your choise: ").strip()
- 
+    print("\nYou are on level", current_level.number)
+    print("1 - Give 10 food to next level")
+    print("2 - Share 5 food with next level")
+    print("3 - Show food")
+    print("4 - Go to next level")
+    print("5 - Who i am?")
+    print("6 - Exit")
+    print("7 - Destroy next level (remove all its food)")
+
+    choice = input("Your choice: ")
+
     if choice == "1":
-        print("you take your food.")
-
+        current_level.give_food()
     elif choice == "2":
-        current_level.give_another_lvl()
-
-    elif choice == "3":
         current_level.share_food()
-
-
+    elif choice == "3":
+        current_level.show_food()
     elif choice == "4":
-        print(current_level.platform.get_info())
-        if current_level.next_level:
-            print(current_level.next_level.platform.get_info())
+        if current_level.next:
+            current_level = current_level.next
         else:
-            print("No next level.")
-            
+            print("You are already at the last level.")
     elif choice == "5":
-        lvl1.takeall()
-       
-    elif choice =="6":
-       print("bye")
-       break
+        player.who_is_here(current_level)  # Now calls the `who_is_here()` method of Person
+    elif choice == "6":
+        print("Game over.")
+    elif choice == "7":
+     if current_level.next:
+        current_level.platform.kill_next_level(current_level.next.platform)
     else:
-        print("choise dont correct!")
-            
+        print("No next level to destroy.")
+
+        
