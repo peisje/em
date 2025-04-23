@@ -1,78 +1,82 @@
-import random
 from abc import ABC, abstractmethod
+import random
 
 class Person(ABC):
-    def __init__(self, name, power):
+    def __init__ (self, name, power):
         self.name = name
         self.power = power
-
+        
     @abstractmethod
     def talk(self):
         pass
+        
+        
+class Gladiator(Person):
+    def __init__(self, name, power):
+        super().__init__(name, power)
+        self.legion = []
+        
+    def talk(self):
+        print(self.name, "Talk: i am Maksimus, i am collect legion. Power:", self.power)
 
+    def zaverbovat(self):
+        if len(self.region) < 10:
+            if peasant.ready_to_join and peasant.power > 5:
+                self.legion.append(peasant)
+                print(peasant.name, "zaverbovan v legion")
+            else:
+                print(peasant.name, "ne zaverbovan v legion")
+        else:
+            print("legion is full")
+            
+    def train():
+        for tsel in self.legion:
+            tsel.power += 2
+            print("train finish")
+            
+    
+    def show_legion(self):
+        print("legion: ")
+        for tsel in self.legion:
+            print (tsel.name, "Power:", tsel.power)
+    
 class Peasant(Person):
     def __init__(self, name, power):
         super().__init__(name, power)
         self.ready_to_join = random.choice([True, False])
 
     def talk(self):
-        print(self.name, "говорит: Я просто крестьянин. Сила:", self.power)
+        print(self.name, "Talk: i am just peasant. Power:", self.power)
+        
+        
+        
+    def create_village(name):
+        peasants = []
+        
+        
+    def journey():
+        pass
+        
+        
+        
+    
+        
+    
+krestjan1 = Peasant("Dasa", 6 )
+krestjan2 = Peasant("lena", 7 )
+krestjan3 = Peasant("elina", 3 )
+krestjan4 = Peasant("sonya", 4 )
+krestjan5 = Peasant("sasa", 8 )
 
-class Gladiator(Person):
-    def __init__(self, name, power):
-        super().__init__(name, power)
-        self.legion = []
 
-    def talk(self):
-        print(self.name, "говорит: Я Максимус. Я собираю легион!")
+krestjan1.talk()
 
-    def recruit(self, peasant):
-        if len(self.legion) >= 10:
-            print("Легион уже полон.")
-        elif peasant.ready_to_join and peasant.power > 5:
-            print(peasant.name, "присоединился к легиону!")
-            self.legion.append(peasant)
-        else:
-            print(peasant.name, "не может присоединиться.")
+maksimus = Gladiator("Maksimus", 100)
+maksimus.show_legion()
+maksimus.train()
+maksimus.show_legion()
 
-    def show_legion(self):
-        print("Легион бойцов:")
-        for p in self.legion:
-            print("-", p.name, "с силой", p.power)
+# maksimus.zaverbovat(krestjan1)
 
-    def train_legion(self):
-        for p in self.legion:
-            p.power += 2
-        print("Легион натренирован. Сила увеличена!")
 
-# Создание деревни
-def create_village(name):
-    peasants = []
-    for i in range(random.randint(3, 5)):
-        name_peasant = name + "_крестьянин_" + str(i+1)
-        power = random.randint(1, 10)
-        peasants.append(Peasant(name_peasant, power))
-    hostile = random.choice([True, False])
-    return {"name": name, "peasants": peasants, "hostile": hostile}
 
-# Путешествие Максимуса
-def journey(gladiator, villages):
-    for village in villages:
-        print("\nДеревня", village["name"])
-        if village["hostile"]:
-            print("Враждебная! Максимус уходит.")
-        else:
-            for p in village["peasants"]:
-                p.talk()
-                gladiator.recruit(p)
-            if len(gladiator.legion) >= 10:
-                print("Максимус набрал полный легион.")
-                break
-
-# Пример
-villages = [create_village("Деревня_" + str(i)) for i in range(5)]
-maximus = Gladiator("Максимус", 100)
-journey(maximus, villages)
-maximus.show_legion()
-maximus.train_legion()
-maximus.show_legion()
