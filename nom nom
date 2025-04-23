@@ -19,8 +19,8 @@ class Gladiator(Person):
     def talk(self):
         print(self.name, "Talk: i am Maksimus, i am collect legion. Power:", self.power)
 
-    def zaverbovat(self):
-        if len(self.region) < 10:
+    def zaverbovat(self, peasant):
+        if len(self.legion) < 10:
             if peasant.ready_to_join and peasant.power > 5:
                 self.legion.append(peasant)
                 print(peasant.name, "zaverbovan v legion")
@@ -29,7 +29,7 @@ class Gladiator(Person):
         else:
             print("legion is full")
             
-    def train():
+    def train(self):
         for tsel in self.legion:
             tsel.power += 2
             print("train finish")
@@ -50,23 +50,20 @@ class Peasant(Person):
         
         
         
-    def create_village(name):
-        peasants = []
-        
-        
-    def journey():
-        pass
+    
+village = [
+    krestjan1 = Peasant("Dasa", 6 ),
+    krestjan2 = Peasant("lena", 7 ),
+    krestjan3 = Peasant("elina", 3 ),
+    krestjan4 = Peasant("sonya", 4 ),
+    krestjan5 = Peasant("sasa", 8 )
+]
         
         
         
     
         
-    
-krestjan1 = Peasant("Dasa", 6 )
-krestjan2 = Peasant("lena", 7 )
-krestjan3 = Peasant("elina", 3 )
-krestjan4 = Peasant("sonya", 4 )
-krestjan5 = Peasant("sasa", 8 )
+
 
 
 krestjan1.talk()
@@ -76,7 +73,5 @@ maksimus.show_legion()
 maksimus.train()
 maksimus.show_legion()
 
-# maksimus.zaverbovat(krestjan1)
-
-
+maksimus.zaverbovat(krestjan1)
 
