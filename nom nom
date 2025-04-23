@@ -11,7 +11,11 @@ class Person(ABC):
         
         
 class Gladiator(Person):
-    pass
+    def __init__(self):
+        super().__init__(name; power)
+        
+    def talk(self):
+        print ("talk")
 
     def recruit(self):
         pass
@@ -20,4 +24,28 @@ class Gladiator(Person):
         pass
     
 class Peasant(Person):
-    pass
+    def __init__(self):
+        super().__init__(name; power)
+
+def talk(self):
+        print ("talk")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
