@@ -1,25 +1,23 @@
 from abc import ABC, abstractmethod
 
 class Animal(ABC):
+    def __init__(self, name):
+        self.name = name
+
     @abstractmethod
     def eat_food(self):
         pass
 
 class Monkey(Animal):
     def eat_food(self):
-        print("Monkey eats meat")
-    
-    def __repr__(self):
-        return "Monkey()"
+        print(f"Monkey {self.name} eats meat")
 
-
-monkey1 = Monkey()
-monkey2 = Monkey()
-monkey3 = Monkey()
-
+monkey1 = Monkey("dasa")
+monkey2 = Monkey("elina")
+monkey3 = Monkey("sonya")
 
 animals = [monkey1, monkey2, monkey3]
 
+for animal in animals:
+    animal.eat_food()
 
-
-monkey1.eat_food()  
