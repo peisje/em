@@ -33,9 +33,8 @@ class Gladiator(Person):
     def train(self):
         for tsel in self.legion:
             tsel.power += 2
-            print("train finish")
+        print("train finish")
             
-    
     def show_legion(self):
         print("legion: ")
         for tsel in self.legion:
@@ -48,31 +47,19 @@ class Peasant(Person):
 
     def talk(self):
         print(self.name, "Talk: i am just peasant. Power:", self.power)
-        
-        
-        
-    
 
-krestjan1 = Peasant("Dasa", 6 ),
-krestjan2 = Peasant("lena", 7 ),
-krestjan3 = Peasant("elina", 3 ),
-krestjan4 = Peasant("sonya", 4 ),
-krestjan5 = Peasant("sasa", 8 )
-krestjan6 = Peasant("igor", 2 )
+krestjan1 = Peasant("Dasa", 6)
+krestjan2 = Peasant("lena", 7)
+krestjan3 = Peasant("elina", 3)
+krestjan4 = Peasant("sonya", 4)
+krestjan5 = Peasant("sasa", 8)
+krestjan6 = Peasant("igor", 2)
 
-        
 villages = [
     {"peasants": [krestjan1, krestjan2], "hz": random.choice([True, False])},
     {"peasants": [krestjan3, krestjan4], "hz": random.choice([True, False])},
     {"peasants": [krestjan5, krestjan6], "hz": random.choice([True, False])}
-    
-    ]
-        
-        
-    
-        
-
-
+]
 
 krestjan1.talk()
 
