@@ -4,12 +4,10 @@ from tkinter.colorchooser import askcolor
 class MyPaint:
     def __init__(self, root):
         self.root = root
-    
         self.color = "black"
         self.eraser = False
         self.old_x = None
         self.old_y = None
-        
         self.bg_color = "white"
         
         self.canvas = Canvas(root, bg=self.bg_color, width=600, height=400)
@@ -28,7 +26,7 @@ class MyPaint:
         Button(self.frame, text="clear", command=self.clear).pack(side=LEFT)
         
         
-        self.size_slider = Scale(root, from_=1, to=20, orient=HORIZONTAL)
+        self.size_slider = Scale(root, from_=1, to=100, orient=HORIZONTAL)
         self.size_slider.set(5)
         self.size_slider.pack()
         
@@ -39,8 +37,6 @@ class MyPaint:
         size = self.size_slider.get()
         x, y = event.x, event.y
         self.canvas.create_oval(x - size, y - size, x + size, y + size, fill=color, outline=color)
-        
-
     
     def black (self):
         self.color = "black"
@@ -73,7 +69,6 @@ class MyPaint:
             self.canvas.config(bg=self.bg_color)
 
 
-
 if __name__ == "__main__":
     root = Tk()
     app = MyPaint(root)
@@ -81,4 +76,3 @@ if __name__ == "__main__":
     root.mainloop()
     
     
- 
