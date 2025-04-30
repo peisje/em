@@ -28,12 +28,19 @@ class MyPaint:
         Button(self.frame, text="clear", command=self.clear).pack(side=LEFT)
         
         
+        self.size_slider = Scale(root, from_=1, to=20, orient=HORIZONTAL)
+        self.size_slider.set(5)
+        self.size_slider.pack()
+        
+        self.canvas.bind("<B1-Motion>", self.paint)
         
     def paint (self, event):
-        pass
+        color = "white" if self.eraser else self.color
+        size = self.size_slider.get()
+        x, y = event.x, event.y
+        self.canvas.create_oval(x - size, y - size, x + size, y + size, fill=color, outline=color)
+        
 
-    def reset (self,event):
-        pass
     
     def black (self):
         self.color = "black"
@@ -48,7 +55,10 @@ class MyPaint:
         self.eraser = False
     
     def choose_color (self):
-        pass
+        clr = askcolor()[1]
+        if clr:
+            self.color = clr
+            self.eraser = False
     
     def use_eraser (self):
         self.eraser = True
